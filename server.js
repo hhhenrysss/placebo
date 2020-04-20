@@ -1,5 +1,5 @@
 "use strict";
-
+require('dotenv').config();
 var passport = require("passport"),
   express = require("express"),
   jwt = require("jsonwebtoken"),
@@ -100,8 +100,12 @@ router.route("/auth/twitter/reverse")
       console.log("POST /auth/twitter/reverse");
 
       var jsonStr =
-        '{ "' + body.replace(/&/g, '", "').replace(/=/g, '": "') + '"}';
-      res.send(JSON.parse(jsonStr));
+         body.replace(/&/g, '", "').replace(/=/g, '": "');
+      try {
+        res.send(JSON.parse(jsonStr));
+      } catch (e) {
+        res.send(JSON.parse('{"' + jsonStr + '"}'));
+      }
     }
   );
 });

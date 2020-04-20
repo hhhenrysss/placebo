@@ -39,8 +39,11 @@ class Logger {
             method: "POST",
             body: JSON.stringify(message),
             headers
-        }).then((res) => res.json())
-        .then((json) => console.log(json));
+        }).then((res) => {
+            console.log('log response', res);
+            // Response object is not JSON-serializable
+            return res;
+        }).catch(e => console.log('error in log', e));
     }
 
     buildMessage(type, message) {

@@ -3,10 +3,14 @@
   "version": "1.1.0",
   "private": true,
   "homepage": "https://mini-twitter-feed.herokuapp.com",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "cors": "^2.8.4",
+    "dotenv": "^8.2.0",
     "express": "^4.16.2",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.3.0",
@@ -31,14 +35,14 @@
   "scripts": {
     "start": "node server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "client": "react-scripts start",
+    "client": "PORT=3000 react-scripts start",
     "server": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3001",
   "devDependencies": {
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.5"
